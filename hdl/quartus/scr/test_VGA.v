@@ -25,9 +25,9 @@ module test_VGA(
 	// VGA input/output  
     output wire VGA_Hsync_n,  // horizontal sync output
     output wire VGA_Vsync_n,  // vertical sync output
-    output wire [3:0] VGA_R,	// 4-bit VGA red output
-    output wire [3:0] VGA_G,  // 4-bit VGA green output
-    output wire [3:0] VGA_B,  // 4-bit VGA blue output
+    output wire  VGA_R,	// 1-bit VGA red output
+    output wire  VGA_G,  // 1-bit VGA green output
+    output wire  VGA_B,  // 1-bit VGA blue output
     output wire clkout,  
  	
 	// input/output
@@ -39,11 +39,11 @@ module test_VGA(
 );
 
 // TAMAÑO DE visualización 
-parameter CAM_SCREEN_X = 160;
-parameter CAM_SCREEN_Y = 120;
+parameter CAM_SCREEN_X = 128;//160
+parameter CAM_SCREEN_Y = 96;//120
 
-localparam AW = 15; // LOG2(CAM_SCREEN_X*CAM_SCREEN_Y)
-localparam DW = 12;
+localparam AW = 14; // LOG2(CAM_SCREEN_X*CAM_SCREEN_Y)
+localparam DW = 3;
 
 // El color es RGB 444
 localparam RED_VGA =   12'b111100000000;
@@ -74,9 +74,9 @@ wire [8:0]VGA_posY;		   // Determinar la pos de memoria que viene del VGA
 la pantalla VGA es RGB 444, pero el almacenamiento en memoria se hace 332
 por lo tanto, los bits menos significactivos deben ser cero
 **************************************************************************** */
-	assign VGA_R = data_RGB444[11:8];
-	assign VGA_G = data_RGB444[7:4];
-	assign VGA_B = data_RGB444[3:0];
+	assign VGA_R = data_RGB444[2];
+	assign VGA_G = data_RGB444[1];
+	assign VGA_B = data_RGB444[0];
 
 
 
@@ -90,17 +90,16 @@ por lo tanto, los bits menos significactivos deben ser cero
 **************************************************************************** */
 assign clk12M =clk;
 
-/*
+
 cl_25_24_quartus clk25(
-	.areset(rst),
+	.areset(0),
 	.inclk0(clk12M),
 	.c0(clk25M)
 	
 );
-*/
 
 
-assign clk25M=clk;
+//assign clk25M=clk;
 assign clkout=clk25M;
 
 /* ****************************************************************************
@@ -108,7 +107,7 @@ buffer_ram_dp buffer memoria dual port y reloj de lectura y escritura separados
 Se debe configurar AW  según los calculos realizados en el Wp01
 se recomiendia dejar DW a 8, con el fin de optimizar recursos  y hacer RGB 332
 **************************************************************************** */
-buffer_ram_dp #( AW,DW,"C:/Users/UECCI/Desktop/proyecto_digital1 2020-2/quartus/scr/image.men")
+buffer_ram_dp #( AW,DW,"C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/prueba.men")
 	DP_RAM(  
 	.clk_w(clk25M), 
 	.addr_in(DP_RAM_addr_in), 
@@ -146,10 +145,12 @@ adicionales seran iguales al color del último pixel de memoria
 **************************************************************************** */
 
 always @ (VGA_posX, VGA_posY) begin
-		if ((VGA_posX>CAM_SCREEN_X-1) || (VGA_posY>CAM_SCREEN_Y-1))
-			DP_RAM_addr_out=19212;
-		else
-			DP_RAM_addr_out=VGA_posX+VGA_posY*CAM_SCREEN_Y;
+//		if ((VGA_posX>CAM_SCREEN_X-1) || (VGA_posY>CAM_SCREEN_Y-1))
+//			DP_RAM_addr_out=60012;
+//		else
+			tmpx=VGA_posX/5;
+			tmpy =VGA_pos/5;
+			DP_RAM_addr_out=tmpx+tmpy*CAM_SCREEN_Y;
 end
 
 
@@ -163,7 +164,7 @@ este bloque debe crear un nuevo archivo
 	 	.clk(clk25M),
 		.rst(rst),
 		.in1(btnr),
-		.in2(btnr),
+		.in2(btnl),
 		.mem_px_addr(DP_RAM_addr_in),
 		.mem_px_data(DP_RAM_data_in),
 		.px_wr(DP_RAM_regW)

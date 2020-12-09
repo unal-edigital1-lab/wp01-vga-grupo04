@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at FSM_game.v(33): object "movl" differs only in case from object "MOVL" in the same scope File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 33
+Info (10281): Verilog HDL Declaration information at FSM_game.v(32): object "movr" differs only in case from object "MOVR" in the same scope File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 32

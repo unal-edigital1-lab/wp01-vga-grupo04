@@ -17,9 +17,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module buffer_ram_dp#( 
-	parameter AW = 15, // Cantidad de bits  de la direccin 
-	parameter DW = 12, // cantidad de Bits de los datos 
-	parameter   imageFILE= "image.men")
+	parameter AW = 14, // Cantidad de bits  de la direccin 
+	parameter DW = 3, // cantidad de Bits de los datos 
+	parameter   imageFILE= "prueba.men")
 	(  
 	input  clk_w, 
 	input  [AW-1: 0] addr_in, 
@@ -51,7 +51,7 @@ end
 
 
 initial begin
-	$readmemh(imageFILE, ram);
+	$readmemb(imageFILE, ram);
 //	ram[0] = 0;
 //	ram[1] = 12'b111111111111;
 end

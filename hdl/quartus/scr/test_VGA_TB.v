@@ -28,9 +28,9 @@ module test_VGA_TB;
 	// Outputs
 	wire VGA_Hsync_n;
 	wire VGA_Vsync_n;
-	wire [3:0] VGA_R;
-	wire [3:0] VGA_G;
-	wire [3:0] VGA_B;
+	wire VGA_R;
+	wire VGA_G;
+	wire VGA_B;
    wire bntr;
 	wire bntl;
 	wire clkout;
@@ -58,7 +58,8 @@ module test_VGA_TB;
 		rst = 0;
 	end
 
-	always #2 clk  = ~clk;
+	//always #2 clk  = ~clk; //para 12MHz
+	always #4 clk  = ~clk; //para 25MHz
 	
 	
 	reg [9:0]line_cnt=0;
@@ -82,8 +83,8 @@ module test_VGA_TB;
 	/* ecsritura de log para cargar se cargados en https://ericeastwood.com/lab/vga-simulator/*/
 	initial forever begin
 	@(posedge clk_w)
-		$fwrite(f,"%0t ps: %b %b %b %b %b\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R[3:1],VGA_G[3:1],VGA_B[3:2]);
-		$display("%0t ps: %b %b %b %b %b\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R[3:1],VGA_G[3:1],VGA_B[3:2]);
+		$fwrite(f,"%0t ps: %b %b %b00 %b00 %b0\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R,VGA_G,VGA_B);
+		$display("%0t ps: %b %b %b00 %b00 %b0\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R,VGA_G,VGA_B);
 		
 	end
 	
