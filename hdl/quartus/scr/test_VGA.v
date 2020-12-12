@@ -34,7 +34,8 @@ module test_VGA(
 	
 	
 	input wire bntr,
-	input wire bntl
+	input wire bntl,
+	input wire init
 		
 );
 
@@ -143,14 +144,18 @@ LÓgica para actualizar el pixel acorde con la buffer de memoria y el pixel de
 VGA si la imagen de la camara es menor que el display  VGA, los pixeles 
 adicionales seran iguales al color del último pixel de memoria 
 **************************************************************************** */
+//registros temporales para hacer la ampliacion de pantalla
+reg [9:0] tmpx;
+reg [8:0] tmpy;
+
 
 always @ (VGA_posX, VGA_posY) begin
 //		if ((VGA_posX>CAM_SCREEN_X-1) || (VGA_posY>CAM_SCREEN_Y-1))
 //			DP_RAM_addr_out=60012;
 //		else
 			tmpx=VGA_posX/5;
-			tmpy =VGA_pos/5;
-			DP_RAM_addr_out=tmpx+tmpy*CAM_SCREEN_Y;
+			tmpy =(VGA_posY-1)/5;
+			DP_RAM_addr_out=tmpx+tmpy*CAM_SCREEN_X;
 end
 
 
@@ -165,6 +170,7 @@ este bloque debe crear un nuevo archivo
 		.rst(rst),
 		.in1(btnr),
 		.in2(btnl),
+		.in3(init),
 		.mem_px_addr(DP_RAM_addr_in),
 		.mem_px_data(DP_RAM_data_in),
 		.px_wr(DP_RAM_regW)

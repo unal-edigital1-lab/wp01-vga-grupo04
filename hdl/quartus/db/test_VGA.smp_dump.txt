@@ -1,0 +1,21 @@
+
+State Machine - |test_VGA|FSM_game:juego|status_bola
+Name status_bola.FIN status_bola.MOVX status_bola.CAMBX status_bola.MOVY status_bola.CAMBY status_bola.CHKX status_bola.CHKCHOQUE status_bola.CHKINF status_bola.CHKSUPINF status_bola.0000 
+status_bola.0000 0 0 0 0 0 0 0 0 0 0 
+status_bola.CHKSUPINF 0 0 0 0 0 0 0 0 1 1 
+status_bola.CHKINF 0 0 0 0 0 0 0 1 0 1 
+status_bola.CHKCHOQUE 0 0 0 0 0 0 1 0 0 1 
+status_bola.CHKX 0 0 0 0 0 1 0 0 0 1 
+status_bola.CAMBY 0 0 0 0 1 0 0 0 0 1 
+status_bola.MOVY 0 0 0 1 0 0 0 0 0 1 
+status_bola.CAMBX 0 0 1 0 0 0 0 0 0 1 
+status_bola.MOVX 0 1 0 0 0 0 0 0 0 1 
+status_bola.FIN 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |test_VGA|FSM_game:juego|status
+Name status.MOVL status.CHKR status.CHKL status.0000 status.MOVR 
+status.0000 0 0 0 0 0 
+status.CHKL 0 0 1 1 0 
+status.CHKR 0 1 0 1 0 
+status.MOVL 1 0 0 1 0 
+status.MOVR 0 0 0 1 1 

@@ -10,14 +10,14 @@ z2
 cModel Technology
 Z0 dC:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/simulation/modelsim
 vbuffer_ram_dp
-Z1 !s110 1607469264
+Z1 !s110 1607659093
 !i10b 1
-!s100 E@OoJEz;B7[C2`?0TJOU^2
+!s100 NGfg9lD^Y`Q@a_nohzSHi1
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IMQCXPHhciK6^Al<Z<n=Dd3
+IPbA[kV0c_eWNZf9eU`iEY2
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1607466117
+w1607482074
 8C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v
 FC:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v
 !i122 4
@@ -26,7 +26,7 @@ Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z5 !s108 1607469264.000000
+Z5 !s108 1607659093.000000
 !s107 C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr|C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v|
 !i113 1
@@ -34,7 +34,7 @@ Z6 o-vlog01compat -work work
 Z7 !s92 -vlog01compat -work work {+incdir+C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr}
 Z8 tCvgOpt 0
 vcl_25_24_quartus
-R1
+!s110 1607659092
 !i10b 1
 !s100 QCI8AD8]OYK3Y9YcFIL]E0
 R2
@@ -50,7 +50,7 @@ R4
 r1
 !s85 0
 31
-R5
+Z10 !s108 1607659092.000000
 !s107 C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/cl_25_24_quartus.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr|C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/cl_25_24_quartus.v|
 !i113 1
@@ -84,21 +84,21 @@ R8
 vFSM_game
 R1
 !i10b 1
-!s100 g[D3;e>OBY[]ZfKFzj_I<3
+!s100 ]1gc?@jZI<ET6Dkea9>z<1
 R2
-IMM<:DINMKbgOZAGcj>h7S2
+Ie<GzSW0<OZ?X::VT7>4Z62
 R3
 R0
-w1607466370
+w1607659075
 8C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v
 FC:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v
 !i122 1
-L0 3 68
+L0 3 178
 R4
 r1
 !s85 0
 31
-R5
+R10
 !s107 C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr|C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v|
 !i113 1
@@ -109,16 +109,16 @@ n@f@s@m_game
 vtest_VGA
 R1
 !i10b 1
-!s100 ]eI^abL9_M@2oLPY?05RR3
+!s100 ^aR6@8F?;hMaID@GHb3Ab0
 R2
-I=E?YP4KIW2LjfAWIZ65:Y1
+IV>fh4b7QQ3RO9hFLGk<^_2
 R3
 R0
-w1607466369
+w1607658354
 8C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/test_VGA.v
 FC:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/test_VGA.v
 !i122 3
-L0 21 150
+L0 21 158
 R4
 r1
 !s85 0

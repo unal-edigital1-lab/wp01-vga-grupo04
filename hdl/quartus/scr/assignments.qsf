@@ -5,6 +5,7 @@ set_location_assignment PIN_86 -to rst
 # Switches
 set_location_assignment PIN_91 -to bntr
 set_location_assignment PIN_90 -to bntl
+set_location_assignment PIN_87 -to init
 
 # Video
 set_location_assignment PIN_144 -to VGA_B
