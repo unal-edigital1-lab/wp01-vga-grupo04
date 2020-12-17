@@ -57,12 +57,16 @@ Para hacer el desarrollo del juego, se van a plantear dos procesos diferentes, u
 
 
 ![Maquina de estados barra](https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Estados_barra.PNG)
+
+
 Las señales init, left y right corresponden están asignados a pulsadores de la tarjeta. Por lo que, al oprimir init, el juego empieza a funcionar; al oprimir left la barra actualiza sus posiciones una más a la izquierda y al oprimir right se actualizan las posiciones una más a la derecha, luego de esto, se dibuja la barra en sus nuevas posiciones. 
 
 **Máquina de estados de la bola**
 
 
 ![Maquina de estados bola](https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Estados_bola.PNG)
+
+
 Al oprimir el botón init, la bola se empieza a mover. Este movimiento no es simultáneo en la dirección X y Y, primero se mueve un pixel en dirección vertical y luego uno en dirección horizontal. Los registros dirX y dirY determinan si hay que aumentar o disminuir estas posiciones en cada dirección, para luego, de igual manera, pasar a dibujar la bola en las nuevas posiciones. El registro rebota, determina si la posición en vertical de la bola y la barra es la misma, es decir, si la bola llega a la línea donde debería haber choque con la barra, en caso de que sea así, este verifica que la posición en X (horizontal) de los dos tambien sea la misma. Si no es así, el juego termina y se muestra un punto rojo en el centro que indica que ha perdido.
 
 El botón reiniciar, para los dos casos, dibuja la bola y la barra en sus posiciones iniciales, y vuelve a poner los estados de los dos objetos en START
