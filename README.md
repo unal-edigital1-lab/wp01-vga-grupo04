@@ -365,5 +365,24 @@ endmodule
  ````
 
 ## Resultados
+**Cómo poner a correr el juego**
+* Para poner a correr el juego, hay que conectar la tarjeta y la USB Blaster altera al computador
+* Abrir en Quartus el proyecto
+* Abrir el programer de quartus y subir el proyecto a la FPGA
+* Conectar la pantalla por el cable VGA a la tarjeta
+* Oprimir el pulsador P87 de la tarjeta para que la bola se empiece a mover y para que sea posible mover la barra
+* Mover la barra a izquierda y derecha con los pulsadores P90 y P91 respectivamente 
+* En caso de que pierda, puede oprimir el boton reset (P86) para que se vuelva a iniciar el juego
+
+
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="path/to/poster_image.png">
+    <source src="https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Correr%20el%20juego.mp4" type="video/mp4">
+  </video>
+</figure>
+
+
+**Jugando**
+
 
  
