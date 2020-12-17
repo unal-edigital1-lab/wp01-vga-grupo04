@@ -67,11 +67,11 @@ module FSM_game #(
 		Movimiento de la barra 
 	
 	**********************************************/
+	localparam INICIO_LINEA = 15200;
 	reg done_barrax=0;
 	reg [2:0] count_Tam;
 	parameter TAM_X_BARRA =5;
    reg pallet_draw=0;
-	
 	
 	
 	always @(posedge clk) begin
@@ -79,8 +79,8 @@ module FSM_game #(
 			count_Tam<=0;
 			px_wr<=0;
 			posY_barra = 96;
-			status=START;
 		end
+
 		if(pallet_draw)begin	
 
 			done_barrax=0;
@@ -160,6 +160,7 @@ module FSM_game #(
 	reg ball_draw=0;
 	reg lost;
 	reg red_point_draw;
+	reg borrar_punto=0;
 	
 	always @(posedge clk)begin
 		if (rst) begin
@@ -167,8 +168,18 @@ module FSM_game #(
 			px_wr2<=0;
 			lost=0;
 			red_point_draw=0;
+			borrar_punto=1;
+		end
+		
+		if(borrar_punto)begin
+			px_wr2<=1;
+			mem_px_addr2 <= ((posX_bola)+(posY_bola)*tamano_X);
+			mem_px_data2 <= COLOR_FONDO;
+			borrar_punto=0;
 			status_bola=START;
 		end
+		
+		
 		if(ball_draw)begin
 			done_ball=0;
 			px_wr2<=1;

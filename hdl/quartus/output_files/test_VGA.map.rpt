@@ -1,5 +1,5 @@
 Analysis & Synthesis report for test_VGA
-Wed Dec 16 18:20:28 2020
+Thu Dec 17 08:38:24 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -61,15 +61,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 16 18:20:28 2020       ;
+; Analysis & Synthesis Status        ; Successful - Thu Dec 17 08:38:24 2020       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; test_VGA                                    ;
 ; Top-level Entity Name              ; test_VGA                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Total logic elements               ; 468                                         ;
 ;     Total combinational functions  ; 468                                         ;
-;     Dedicated logic registers      ; 161                                         ;
-; Total registers                    ; 161                                         ;
+;     Dedicated logic registers      ; 160                                         ;
+; Total registers                    ; 160                                         ;
 ; Total pins                         ; 12                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 98,304                                      ;
@@ -225,16 +225,16 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;        ;
 ; Total combinational functions               ; 468    ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 142    ;
-;     -- 3 input functions                    ; 123    ;
-;     -- <=2 input functions                  ; 203    ;
+;     -- 4 input functions                    ; 136    ;
+;     -- 3 input functions                    ; 124    ;
+;     -- <=2 input functions                  ; 208    ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
 ;     -- normal mode                          ; 269    ;
 ;     -- arithmetic mode                      ; 199    ;
 ;                                             ;        ;
-; Total registers                             ; 161    ;
-;     -- Dedicated logic registers            ; 161    ;
+; Total registers                             ; 160    ;
+;     -- Dedicated logic registers            ; 160    ;
 ;     -- I/O registers                        ; 0      ;
 ;                                             ;        ;
 ; I/O pins                                    ; 12     ;
@@ -246,9 +246,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1      ;
 ;                                             ;        ;
 ; Maximum fan-out node                        ; clk2Hz ;
-; Maximum fan-out                             ; 85     ;
-; Total fan-out                               ; 2189   ;
-; Average fan-out                             ; 3.29   ;
+; Maximum fan-out                             ; 84     ;
+; Total fan-out                               ; 2176   ;
+; Average fan-out                             ; 3.27   ;
 +---------------------------------------------+--------+
 
 
@@ -257,13 +257,13 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                   ; Entity Name         ; Library Name ;
 +-----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |test_VGA                                     ; 468 (113)           ; 161 (53)                  ; 98304       ; 0            ; 0       ; 0         ; 12   ; 0            ; |test_VGA                                                                                             ; test_VGA            ; work         ;
-;    |FSM_game:juego|                           ; 289 (289)           ; 83 (83)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|FSM_game:juego                                                                              ; FSM_game            ; work         ;
+; |test_VGA                                     ; 468 (111)           ; 160 (53)                  ; 98304       ; 0            ; 0       ; 0         ; 12   ; 0            ; |test_VGA                                                                                             ; test_VGA            ; work         ;
+;    |FSM_game:juego|                           ; 292 (292)           ; 82 (82)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|FSM_game:juego                                                                              ; FSM_game            ; work         ;
 ;    |VGA_Driver640x480:VGA640x480|             ; 44 (44)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|VGA_Driver640x480:VGA640x480                                                                ; VGA_Driver640x480   ; work         ;
-;    |buffer_ram_dp:DP_RAM|                     ; 22 (17)             ; 3 (1)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM                                                                        ; buffer_ram_dp       ; work         ;
-;       |altsyncram:ram_rtl_0|                  ; 5 (0)               ; 2 (0)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0                                                   ; altsyncram          ; work         ;
-;          |altsyncram_qfm1:auto_generated|     ; 5 (0)               ; 2 (2)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0|altsyncram_qfm1:auto_generated                    ; altsyncram_qfm1     ; work         ;
-;             |decode_msa:decode2|              ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0|altsyncram_qfm1:auto_generated|decode_msa:decode2 ; decode_msa          ; work         ;
+;    |buffer_ram_dp:DP_RAM|                     ; 21 (17)             ; 3 (1)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM                                                                        ; buffer_ram_dp       ; work         ;
+;       |altsyncram:ram_rtl_0|                  ; 4 (0)               ; 2 (0)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0                                                   ; altsyncram          ; work         ;
+;          |altsyncram_qfm1:auto_generated|     ; 4 (0)               ; 2 (2)                     ; 98304       ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0|altsyncram_qfm1:auto_generated                    ; altsyncram_qfm1     ; work         ;
+;             |decode_msa:decode2|              ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|buffer_ram_dp:DP_RAM|altsyncram:ram_rtl_0|altsyncram_qfm1:auto_generated|decode_msa:decode2 ; decode_msa          ; work         ;
 ;    |clk50to108_2:clk108|                      ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|clk50to108_2:clk108                                                                         ; clk50to108_2        ; work         ;
 ;       |altpll:altpll_component|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|clk50to108_2:clk108|altpll:altpll_component                                                 ; altpll              ; work         ;
 ;          |clk50to108_2_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |test_VGA|clk50to108_2:clk108|altpll:altpll_component|clk50to108_2_altpll:auto_generated              ; clk50to108_2_altpll ; work         ;
@@ -315,6 +315,7 @@ Encoding Type:  One-Hot
 +----------------------------------------+-------------------------------------------+
 ; Register name                          ; Reason for Removal                        ;
 +----------------------------------------+-------------------------------------------+
+; FSM_game:juego|borrar_punto            ; Stuck at GND due to stuck port data_in    ;
 ; FSM_game:juego|mem_px_data[2]          ; Stuck at GND due to stuck port data_in    ;
 ; FSM_game:juego|mem_px_data[1]          ; Merged with FSM_game:juego|mem_px_data[0] ;
 ; FSM_game:juego|posY_barra[1..4,7]      ; Merged with FSM_game:juego|posY_barra[0]  ;
@@ -323,13 +324,14 @@ Encoding Type:  One-Hot
 ; FSM_game:juego|posY_barra[5]           ; Stuck at VCC due to stuck port data_in    ;
 ; FSM_game:juego|mem_px_addr[11..13]     ; Stuck at VCC due to stuck port data_in    ;
 ; FSM_game:juego|mem_px_addr[14]         ; Stuck at GND due to stuck port data_in    ;
+; FSM_game:juego|px_wr2                  ; Stuck at VCC due to stuck port data_in    ;
 ; FSM_game:juego|status_bola~10          ; Lost fanout                               ;
 ; FSM_game:juego|status_bola~11          ; Lost fanout                               ;
 ; FSM_game:juego|status_bola~12          ; Lost fanout                               ;
 ; FSM_game:juego|status~7                ; Lost fanout                               ;
 ; FSM_game:juego|status~9                ; Lost fanout                               ;
 ; contador[0]                            ; Merged with buffer_ram_dp:DP_RAM|mux      ;
-; Total Number of Removed Registers = 20 ;                                           ;
+; Total Number of Removed Registers = 22 ;                                           ;
 +----------------------------------------+-------------------------------------------+
 
 
@@ -338,6 +340,8 @@ Encoding Type:  One-Hot
 +------------------------------+---------------------------+----------------------------------------+
 ; Register name                ; Reason for Removal        ; Registers Removed due to This Register ;
 +------------------------------+---------------------------+----------------------------------------+
+; FSM_game:juego|borrar_punto  ; Stuck at GND              ; FSM_game:juego|px_wr2                  ;
+;                              ; due to stuck port data_in ;                                        ;
 ; FSM_game:juego|posY_barra[0] ; Stuck at GND              ; FSM_game:juego|mem_px_addr[11]         ;
 ;                              ; due to stuck port data_in ;                                        ;
 +------------------------------+---------------------------+----------------------------------------+
@@ -348,7 +352,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 161   ;
+; Total registers                              ; 160   ;
 ; Number of registers using Synchronous Clear  ; 6     ;
 ; Number of registers using Synchronous Load   ; 56    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -372,24 +376,23 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|VGA_Driver640x480:VGA640x480|countX[6] ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|count_Tam[0]            ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|VGA_Driver640x480:VGA640x480|countX[2] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|count_Tam[1]            ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|count_Tam_ball[0]       ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr[5]          ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|VGA_Driver640x480:VGA640x480|countY[7] ;
-; 18:1               ; 2 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|mem_px_data2[1]         ;
-; 18:1               ; 10 bits   ; 120 LEs       ; 10 LEs               ; 110 LEs                ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr2[7]         ;
-; 18:1               ; 5 bits    ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr2[0]         ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|posX_bola[3]            ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr[8]          ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |test_VGA|VGA_Driver640x480:VGA640x480|countY[2] ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|posX_bola[7]            ;
 ; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|posX_barra[5]           ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|posY_bola[6]            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|posY_bola[2]            ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |test_VGA|FSM_game:juego|mem_px_data2[2]         ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 10 LEs               ; 40 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr2[13]        ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; Yes        ; |test_VGA|FSM_game:juego|mem_px_addr2[2]         ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |test_VGA|FSM_game:juego|status                  ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add10                   ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add10                   ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add10                   ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |test_VGA|FSM_game:juego|Selector51              ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 16 LEs               ; 72 LEs                 ; No         ; |test_VGA|FSM_game:juego|Add9                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add9                    ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add9                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |test_VGA|FSM_game:juego|Selector52              ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |test_VGA|FSM_game:juego|Selector49              ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |test_VGA|FSM_game:juego|Add10                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 
 
@@ -933,14 +936,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 12                          ;
-; cycloneiii_ff         ; 161                         ;
+; cycloneiii_ff         ; 160                         ;
 ;     ENA               ; 28                          ;
 ;     ENA SCLR          ; 1                           ;
 ;     ENA SCLR SLD      ; 4                           ;
 ;     ENA SLD           ; 38                          ;
 ;     SCLR              ; 1                           ;
 ;     SLD               ; 14                          ;
-;     plain             ; 75                          ;
+;     plain             ; 74                          ;
 ; cycloneiii_lcell_comb ; 468                         ;
 ;     arith             ; 199                         ;
 ;         2 data inputs ; 144                         ;
@@ -948,14 +951,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     normal            ; 269                         ;
 ;         0 data inputs ; 9                           ;
 ;         1 data inputs ; 12                          ;
-;         2 data inputs ; 38                          ;
-;         3 data inputs ; 68                          ;
-;         4 data inputs ; 142                         ;
+;         2 data inputs ; 43                          ;
+;         3 data inputs ; 69                          ;
+;         4 data inputs ; 136                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 12                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.70                        ;
-; Average LUT depth     ; 4.03                        ;
+; Average LUT depth     ; 4.06                        ;
 +-----------------------+-----------------------------+
 
 
@@ -974,7 +977,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Wed Dec 16 18:20:18 2020
+    Info: Processing started: Thu Dec 17 08:38:06 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off test_VGA -c test_VGA
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -990,7 +993,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file scr/buf
     Info (12023): Found entity 1: buffer_ram_dp File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v Line: 19
 Warning (10222): Verilog HDL Parameter Declaration warning at FSM_game.v(58): Parameter Declaration in module "FSM_game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 58
 Warning (10222): Verilog HDL Parameter Declaration warning at FSM_game.v(60): Parameter Declaration in module "FSM_game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 60
-Warning (10222): Verilog HDL Parameter Declaration warning at FSM_game.v(72): Parameter Declaration in module "FSM_game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 72
+Warning (10222): Verilog HDL Parameter Declaration warning at FSM_game.v(73): Parameter Declaration in module "FSM_game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 73
 Warning (12162): EDA synthesis tool is specified as "Custom", but Library Mapping File is not specified
 Warning (12163): EDA synthesis tool is specified as "Custom", but VCC is not specified
 Warning (12164): EDA synthesis tool is specified as "Custom", but GND is not specified
@@ -1076,16 +1079,17 @@ Warning (10230): Verilog HDL assignment warning at FSM_game.v(98): truncated val
 Warning (10230): Verilog HDL assignment warning at FSM_game.v(102): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 102
 Warning (10230): Verilog HDL assignment warning at FSM_game.v(134): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 134
 Warning (10230): Verilog HDL assignment warning at FSM_game.v(142): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 142
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(175): truncated value with size 32 to match size of target (4) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 175
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(178): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 178
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(182): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 182
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(186): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 186
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(190): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 190
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(194): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 194
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(235): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 235
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(245): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 245
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(275): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 275
-Warning (10230): Verilog HDL assignment warning at FSM_game.v(285): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 285
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(176): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 176
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(186): truncated value with size 32 to match size of target (4) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 186
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(189): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 189
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(193): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 193
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(197): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 197
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(201): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 201
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(205): truncated value with size 32 to match size of target (15) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 205
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(246): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 246
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(256): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 256
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(286): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 286
+Warning (10230): Verilog HDL assignment warning at FSM_game.v(296): truncated value with size 32 to match size of target (8) File: C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v Line: 296
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "buffer_ram_dp:DP_RAM|ram_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -1137,17 +1141,17 @@ Info (17049): 5 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/output_files/test_VGA.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 530 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 529 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 505 logic cells
+    Info (21061): Implemented 504 logic cells
     Info (21064): Implemented 12 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
-    Info: Peak virtual memory: 4771 megabytes
-    Info: Processing ended: Wed Dec 16 18:20:28 2020
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:22
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 4769 megabytes
+    Info: Processing ended: Thu Dec 17 08:38:24 2020
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:38
 
 
 +------------------------------------------+
