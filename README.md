@@ -9,7 +9,9 @@ Nombres:
  Respuestas a preguntas: 
  1.) Memoria de la FPGA: 414 Kb
  Memoría a usar el 50%: 414/2= 212 Kb
- Solución a las especificaciones:
- Usar una porción de la pantalla de 320 x 240 usando sólo un bit, entonce el uso de memoria resulta:
- Memoria total = (320 x 240 x 1)/1024=75 Kb
+ Debido a las limitaciones de la tarjeta se plantea el siguiente uso de memoria:
+ pantalla de 160x128 usando un bit de cada color por pixel 
+ Memoria total = (160x128x3)/1024= 60 kbits.
+ **Descripción del código**
+ 
  
