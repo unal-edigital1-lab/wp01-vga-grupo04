@@ -24,7 +24,31 @@
 					"strict" : false
 				},
 				{
+					"name" : "clkout",
+					"strict" : false
+				},
+				{
+					"name" : "outPrueba",
+					"strict" : false
+				},
+				{
 					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "init",
+					"strict" : false
+				},
+				{
+					"name" : "bntr",
+					"strict" : false
+				},
+				{
+					"name" : "bntl",
 					"strict" : false
 				}
 			]

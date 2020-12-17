@@ -7,45 +7,37 @@ module FSM_game #(
 		input rst,
 		input in1,
 		input in2,
-		input in3, //No se ha asignado en los otros archivos
+		input in3,
+		
+		output reg [AW-1: 0] mem_px_addr2,
+		output reg [DW-1: 0] mem_px_data2,
+		output reg px_wr2,
+		
 		output reg [AW-1: 0] mem_px_addr,
 		output reg [DW-1: 0] mem_px_data,
 		output reg px_wr
+		
+
    );
-	//Pantalla de 128x96
+	//Pantalla de 160x128
 	
 	localparam COLOR_BARRA = 3'b010;//verde
 	localparam COLOR_BOLA = 3'b111;//blanco
 	localparam COLOR_FONDO = 3'b001;//azul
-	localparam COLOR_LOST = 3'b100;//rojo
+	localparam ROJO = 3'b100;//rojo
 	
-	parameter tamano_X = 128;
-	parameter tamano_Y = 96;
+	localparam tamano_X = 160;
+	localparam tamano_Y = 128;
 	
-	reg [3:0] status=0;
-	reg [3:0] status_bola=0;
+	reg [3:0] status = 0;
+	reg [3:0] status_bola = 0;
 	
 	wire init;
 	wire right;
 	wire left;
-	wire reset;
 	assign right = in1;
 	assign left = in2;
 	assign init = in3;
-	assign reset = rst;
-	
-	//variables control barra
-	reg pos_ini;
-	reg movr;
-	reg movl;
-	reg borrar_linea;
-	
-	//variables control bola
-	reg cambY;
-	reg movY;
-	reg cambX;
-	reg movX;
-	reg lost;
 	
 	//dirección de la pelota
 	reg dirX=0;
@@ -55,318 +47,257 @@ module FSM_game #(
 	//8 bits para la posicion vertical y 9 para la horizonal
 	
 	reg [7:0] posX_barra;
-	reg [6:0] posY_barra;
+	reg [7:0] posY_barra=96;
 	
 	reg [7:0] posX_bola;
-	reg [6:0] posY_bola;
+	reg [7:0] posY_bola;
 	
-	reg [7:0] i;
+//	assign outprueba = movl;
 	
 	//Estados de la barra
-	parameter START=0, CHKL=1, CHKR=2, MOVL=3, MOVR=4;
+	parameter START=0, PLAY=2, MOVL=3, MOVR=4;
 	//Estados de la pelota 
-	parameter CHKSUPINF=1, CHKINF=2, CHKCHOQUE=3, CHKX=4, CAMBY=5, MOVY=6, CAMBX=7, MOVX=8, FIN=9;
+	parameter MOVE_V=1, RIGHT=2, LEFT=3, UP=4, DOWN=5, MOVE_H=6, FIN=9;
 	
 	
-
-	always @(posedge clk)begin
 	
-		//Ir a posiciones iniciales
-		if(pos_ini)begin
-			posX_barra = 64;
-			posY_barra = 80;
-			
-			posX_bola = 64;
-			posY_bola = 48;
-			
-			//Poner posiciones en memoria
-			
-			mem_px_addr = posX_barra+(posY_barra-1)*tamano_X;
-			mem_px_data = COLOR_BARRA;
-			
-			px_wr = 1;
-			#1 px_wr = 0;
-			mem_px_addr = mem_px_addr+1;
-			px_wr = 1;
-			#1 px_wr = 0;
-			mem_px_addr = mem_px_addr-2;
-			px_wr = 1;
-			#1 px_wr = 0;
-			
-			mem_px_addr = posX_bola+(posY_bola-1)*tamano_X;
-			mem_px_data = COLOR_BOLA;
-			px_wr = 1;
-			#1 px_wr = 0;			
-		end
-		
-		
-		//	Mover a la izquierda barra
-		if(movl)begin
-			if(!((posX_barra-1)==1))begin
-			
-				posX_barra = posX_barra-1;
-				mem_px_addr = posX_barra+(posY_barra-1)*tamano_X;
-				mem_px_data = COLOR_BARRA;
-				px_wr = 1;
-				#1 px_wr = 0;
-				mem_px_addr = mem_px_addr+1;
-				px_wr = 1;
-				#1 px_wr = 0;
-				mem_px_addr = mem_px_addr-2;
-				px_wr = 1;
-				#1 px_wr = 0;
-			end
-			
-		end
-		//	Mover a la derecha barra
-		if(movr)begin
-			if(!((posX_barra+1)==tamano_X))begin
-			
-				posX_barra = posX_barra+1;
-				
-				mem_px_addr = posX_barra+(posY_barra-1)*tamano_X;
-				mem_px_data = COLOR_BARRA;
-				px_wr = 1;
-				#1 px_wr = 0;
-				mem_px_addr = mem_px_addr+1;
-				px_wr = 1;
-				#1 px_wr = 0;
-				mem_px_addr = mem_px_addr-2;
-				px_wr = 1;
-				#1 px_wr = 0;
-			end
-
-		end
-		
-		//Borrar la linea inferior donde se ubica la barra, para actualizar su posición
-		if(borrar_linea)begin
-			for(i=0;i<tamano_X;i=i+1)begin
-				mem_px_addr = ((posY_barra-1)*tamano_X)+i;
-				mem_px_data = COLOR_FONDO;
-				px_wr = 1;
-				#1 px_wr = 0;
-			end
-		end
-
-
-		//Cambiar dirección de la pelota en Y
-		if(cambY)begin
-			dirY = ~dirY;
-		end
-		
-		//Cambiar dirección de la pelota en X
-		if(cambX)begin
-			dirX = ~dirX;
-		end
-		
-		//Mover la pelota en Y	
-		if(movY)begin
-			if(dirY)begin
-				posY_bola=posY_bola+1;
-			end else begin
-				posY_bola=posY_bola-1;
-			end
-			
-			//pos bola
-			mem_px_addr = posX_bola+(posY_bola-1)*tamano_X;
-			mem_px_data = COLOR_BOLA;
-			px_wr = 1;
-			#1 px_wr = 0;
-			//borrar posicion encima de la bola
-			mem_px_addr = posX_bola+((posY_bola-1)-1)*tamano_X;
-			mem_px_data = COLOR_FONDO;
-			px_wr = 1;
-			#1 px_wr = 0;
-			//borrar posicion debajo de la bola
-			mem_px_addr = posX_bola+((posY_bola+1)-1)*tamano_X;
-			mem_px_data = COLOR_FONDO;
-			px_wr = 1;
-			#1 px_wr = 0;
-		end
-		
-		//Mover la pelota en X
-		if(movX)begin
-			if(dirX) begin
-				posY_bola=posX_bola+1;
-			end else begin
-				posX_bola=posX_bola-1;
-			end
-				
-			//pos bola
-			mem_px_addr = posX_bola+(posY_bola-1)*tamano_X;
-			mem_px_data = COLOR_BOLA;
-			px_wr = 1;
-			#1 px_wr = 0;
-			//borrar posición a la derecha de la bola
-			mem_px_addr = (posX_bola+1)+(posY_bola-1)*tamano_X;
-			mem_px_data = COLOR_FONDO;
-			px_wr = 1;
-			#1 px_wr = 0;
-			//borrar posición a la izquierda de la bola
-			mem_px_addr = (posX_bola-1)+(posY_bola-1)*tamano_X;
-			mem_px_data = COLOR_FONDO;
-			px_wr = 1;
-			#1 px_wr = 0;
-		end
-		
-		//Acabar juego
-		if(lost) begin //se hace un punto rojo en la mitad de la pantalla
-			mem_px_addr = 64+(48-1)*tamano_X;
-			mem_px_data = COLOR_LOST;
-			px_wr = 1;
-			#1 px_wr = 0;
-		end
-		
-		//Resetear el juego
-		if(reset)begin
-			lost=0;
+	
+	
+	/* *********************************************
+		Movimiento de la barra 
+	
+	**********************************************/
+	reg done_barrax=0;
+	reg [2:0] count_Tam;
+	parameter TAM_X_BARRA =5;
+   reg pallet_draw=0;
+	
+	
+	
+	always @(posedge clk) begin
+		if (rst) begin
+			count_Tam<=0;
+			px_wr<=0;
+			posY_barra = 96;
 			status=START;
-			status_bola=START;
+		end
+		if(pallet_draw)begin	
+
+			done_barrax=0;
+			px_wr <= 1;
+			count_Tam<=count_Tam+1;
+			case(count_Tam)
+				(TAM_X_BARRA+2): begin
+						mem_px_addr <= (posX_barra+posY_barra*tamano_X)+(count_Tam-1);
+						mem_px_data <= COLOR_FONDO;
+	     				done_barrax=1;
+			   	   count_Tam<=0;
+						pallet_draw=0;
+					end	
+				(TAM_X_BARRA+1): begin
+						mem_px_addr <= (posX_barra-1+posY_barra*tamano_X);
+						mem_px_data <= COLOR_FONDO;
+					end
+				default: begin
+						mem_px_addr <= (posX_barra+posY_barra*tamano_X)+count_Tam;
+						mem_px_data <= COLOR_BARRA;
+				end
+			endcase
 		end
 		
 		
-		
-		
-		//Maquina de estados de la barra
 		case(status)
 		
 			START:begin
-				pos_ini=1;
-				movl=0;
-				movr=0;
-				if(init)begin
-					status=CHKL;
+				posX_barra = 80;
+				pallet_draw=1;
+				if(init && done_barrax)begin
+					pallet_draw=0;
+					status<=PLAY;
+				end
+			end
+			PLAY: begin
+				if(done_barrax)begin
+					pallet_draw=0;
+					if(left)begin
+						status<=MOVL;
+					end
+					if(right)begin
+						status<=MOVR;
+					end
 				end
 			end
 			
-			CHKL: begin
-				if(left)begin
-					status=MOVL;
-				end else begin
-					status=CHKR;
-				end
-			end
-			
-			CHKR: begin
-				if(right)begin
-					status=MOVR;
-				end else begin
-					status=CHKL;
-				end
-			end
 			
 			MOVL: begin
-				borrar_linea =1;
-				#130 borrar_linea =0;
-				pos_ini=0;
-				movl=1;
-				movr=0;
-				status=CHKR;
+				if(posX_barra>3)begin
+					posX_barra = posX_barra-1;
+				end
+				pallet_draw=1;
+				status<=PLAY;
 			end
 			
 			MOVR: begin
-				borrar_linea =1;
-				#130 borrar_linea =0;
-				pos_ini=0;
-				movl=0;
-				movr=1;
-				status=CHKL;
-			end
-			
-		endcase
-		
-		
-		
-		//Maquina de estados de la bola
-		case(status_bola)
-			START:begin
-				cambY=0;
-				movY=0;
-				cambX=0;
-				movX=0;
-				lost=0;
-				if(init)
-					status_bola=CHKSUPINF;
-			end
-			
-			CHKSUPINF:begin
-				if(((posY_bola==1)||(posY_bola==(posY_barra-1))))begin
-					status_bola=CHKINF;
-				end else begin
-					status_bola=MOVY;
+				if(posX_barra<(tamano_X-TAM_X_BARRA-4))begin
+					posX_barra = posX_barra+1;
 				end
-			end
-			
-			CHKINF:begin
-				if(posY_bola==(posY_barra-1)) begin 
-					status_bola=CHKCHOQUE;
-				end else begin
-					status_bola=CAMBY;
-				end
-			end
-			
-			CHKCHOQUE:begin
-				if((posX_bola==posX_barra)||(posX_bola==(posX_barra-1))||(posX_bola==(posX_barra+1))) begin
-					status_bola=CAMBY;
-				end else begin
-					status_bola=FIN;
-				end
-			end
-			
-			CAMBY:begin
-				cambY=1;
-				movY=0;
-				cambX=0;
-				movX=0;
-				lost=0;
-				status_bola=MOVY;
-			end
-			
-			MOVY:begin
-				cambY=0;
-				movY=1;
-				cambX=0;
-				movX=0;
-				lost=0;
-				status_bola=CHKX;
-			end
-			
-			CHKX:begin
-				if((posX_bola==1)||(posX_bola==(tamano_X-1)))begin 
-					status_bola=CAMBX;
-				end else begin
-					status_bola=MOVX;
-				end
-			end
-			
-			CAMBX:begin
-				cambY=0;
-				movY=0;
-				cambX=1;
-				movX=0;
-				lost=0;
-				status_bola=MOVX;
-			end
-			
-			MOVX:begin
-				cambY=0;
-				movY=0;
-				cambX=0;
-				movX=1;
-				lost=0;
-				status_bola=CHKSUPINF;
-			end
-			
-			FIN:begin
-				cambY=0;
-				movY=0;
-				cambX=0;
-				movX=0;
-				lost=1;
+				pallet_draw=1;
+				status<=PLAY;
 			end
 			
 		endcase
 		
 	end
+	
+	/*********************************
+	Movimiento de la bola
+	
+	*******************************/	
+	
+	
+	reg [3:0] count_Tam_ball;
+	reg done_ball=0;
+	reg ball_draw=0;
+	reg lost;
+	reg red_point_draw;
+	
+	always @(posedge clk)begin
+		if (rst) begin
+			count_Tam_ball<=0;
+			px_wr2<=0;
+			lost=0;
+			red_point_draw=0;
+			status_bola=START;
+		end
+		if(ball_draw)begin
+			done_ball=0;
+			px_wr2<=1;
+			count_Tam_ball<=count_Tam_ball+1;
+			case(count_Tam_ball)
+				1:begin
+					mem_px_addr2 <= ((posX_bola-1)+(posY_bola)*tamano_X);
+					mem_px_data2 <= COLOR_FONDO;
+				end
+				2:begin
+					mem_px_addr2 <= ((posX_bola)+(posY_bola)*tamano_X);
+					mem_px_data2 <= COLOR_BOLA;
+				end
+				3:begin
+					mem_px_addr2 <= ((posX_bola+1)+(posY_bola)*tamano_X);
+					mem_px_data2 <= COLOR_FONDO;
+				end
+				4:begin
+					mem_px_addr2 <= ((posX_bola)+(posY_bola-1)*tamano_X);
+					mem_px_data2 <= COLOR_FONDO;
+				end
+				5:begin
+					mem_px_addr2 <= ((posX_bola)+(posY_bola+1)*tamano_X);
+					mem_px_data2 <= COLOR_FONDO;
+					done_ball=1;
+					count_Tam_ball<=0;
+					ball_draw=0;
+				end
+			endcase	
+		end
+		
+		if(red_point_draw)begin
+			px_wr2 <=1;
+			mem_px_addr2 <= 10320;
+			mem_px_data2 <= ROJO;
+		end
+		
+		
+		case(status_bola) 
+		
+				START: begin
+					posX_bola=80;
+					posY_bola=64;
+					ball_draw=1;
+					if(init && done_ball)begin
+						ball_draw=0;
+						status_bola=MOVE_V;
+					end
+				end
+				
+				MOVE_V: begin
+					if(done_ball)begin
+						ball_draw=0;
+						if(dirY)begin
+							status_bola<=DOWN;
+						end else begin
+							status_bola<=UP;
+						end
+					end
+				end
+				
+				UP: begin
+					if(posY_bola>4)begin
+						posY_bola = posY_bola-1;
+					end else begin
+						dirY=~dirY;
+					end
+					ball_draw=1;
+					status_bola<=MOVE_H;
+				end
+				
+				DOWN: begin
+					if(posY_bola<posY_barra-2)begin
+						posY_bola = posY_bola+1;
+					end else begin
+						if((posX_bola>=(posX_barra-1))&&(posX_bola<=(posX_barra+TAM_X_BARRA+1)))begin
+							dirY=~dirY;
+						end else begin
+							lost=1;
+						end
+					end
+					if(lost)begin
+						status_bola=FIN;
+					end else begin
+						ball_draw=1;
+						status_bola<=MOVE_H;
+					end
+					
+				end
+				
+				MOVE_H: begin
+					if(done_ball)begin
+						ball_draw=0;
+						if(dirX)begin
+							status_bola<=RIGHT;
+						end else begin
+							status_bola<=LEFT;
+						end
+					end
+				end
+				
+				RIGHT:begin
+					if(posX_bola<tamano_X-3)begin
+						posX_bola=posX_bola+1;
+					end else begin
+						dirX=~dirX;
+					end
+					ball_draw=1;
+					status_bola<=MOVE_V;
+				end
+				
+				LEFT:begin
+					if(posX_bola>4)begin
+						posX_bola=posX_bola-1;
+					end else begin
+						dirX=~dirX;
+					end
+					ball_draw=1;
+					status_bola<=MOVE_V;
+				end	
+				
+				FIN:begin
+					red_point_draw=1;
+				end
+		endcase	
+	end
+	
+	
+	
+	
 
 endmodule

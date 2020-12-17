@@ -31,8 +31,9 @@ module test_VGA_TB;
 	wire VGA_R;
 	wire VGA_G;
 	wire VGA_B;
-   wire bntr;
-	wire bntl;
+   reg bntr;
+	reg bntl;
+	reg init;
 	wire clkout;
 
 	// Instantiate the Unit Under Test (UUT)
@@ -45,7 +46,8 @@ module test_VGA_TB;
 		.VGA_G(VGA_G), 
 		.VGA_B(VGA_B),
 		.bntr(bntr),
-		.bntl(bntr),
+		.bntl(bntl),
+		.init(init),
 		.clkout(clkout)
 	
 	);
@@ -54,12 +56,21 @@ module test_VGA_TB;
 		// Initialize Inputs
 		clk = 0;
 		rst = 1;
-		#200;
-		rst = 0;
+		init = 1;
+		bntl = 1;
+		bntr = 1;
+		#200 rst = 0;
+		#200 init = 0;
+		#200 init = 1;
+		#200 bntl = 0;
+		#200 bntl = 1;
+		#200 bntr = 0;
+		#200 bntr = 1;
+		
+		
 	end
 
-	//always #2 clk  = ~clk; //para 12MHz
-	always #4 clk  = ~clk; //para 25MHz
+	always #1 clk  = ~clk;
 	
 	
 	reg [9:0]line_cnt=0;
@@ -78,13 +89,13 @@ module test_VGA_TB;
    end
 	
 	reg clk_w =0;
-	always #1 clk_w  = ~clk_w;
+	always #2 clk_w  = ~clk_w;
 	
 	/* ecsritura de log para cargar se cargados en https://ericeastwood.com/lab/vga-simulator/*/
 	initial forever begin
 	@(posedge clk_w)
 		$fwrite(f,"%0t ps: %b %b %b00 %b00 %b0\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R,VGA_G,VGA_B);
-		$display("%0t ps: %b %b %b00 %b00 %b0\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R,VGA_G,VGA_B);
+//		$display("%0t ps: %b %b %b %b %b\n",$time,VGA_Hsync_n, VGA_Vsync_n, VGA_R[3:1],VGA_G[3:1],VGA_B[3:2]);
 		
 	end
 	

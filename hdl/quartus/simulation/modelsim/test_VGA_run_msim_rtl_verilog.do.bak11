@@ -5,12 +5,12 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
-vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/cl_25_24_quartus.v}
+vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/clk50to108_2.v}
 vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/FSM_game.v}
 vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/VGA_driver.v}
 vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/test_VGA.v}
 vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/buffer_ram_dp.v}
-vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/db {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/db/cl_25_24_quartus_altpll.v}
+vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/db {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/db/clk50to108_2_altpll.v}
 
 vlog -vlog01compat -work work +incdir+C:/Users/difao/OneDrive/Documents/Digital\ I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr {C:/Users/difao/OneDrive/Documents/Digital I/Laboratorio/wp01-vga-grupo04/hdl/quartus/scr/test_VGA_TB.v}
 
