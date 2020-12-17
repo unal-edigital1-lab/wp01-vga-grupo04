@@ -1,4 +1,10 @@
 # WP01
+# Proyecto - Diseño de un videojuego con implementación en VGA 
+Nombres:
+* Sergio Armando Romero Quevedo
+* Diego Fabian Osorio Fonseca
+## Desarrollo
+
  1 entrega de proyecto 
  Respuestas a preguntas: 
  1.) Memoria de la FPGA: 414 Kb
