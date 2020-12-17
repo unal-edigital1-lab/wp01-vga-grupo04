@@ -376,10 +376,12 @@ endmodule
 
 
 <figure class="video_container">
-  <iframe src="https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Correr%20el%20juego.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+  <video controls="true" allowfullscreen="true" >
+    <source src="/wp01-vga-grupo04/Imagenes/Correr el juego.mp4" type="video/mp4">
+  </video>
 </figure>
 
-
+/wp01-vga-grupo04/Imagenes/Correr el juego.mp4
 
 **Jugando**
 
