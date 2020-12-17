@@ -21,11 +21,37 @@ Memoria total = (160x128x3)/1024= 60 kbits.
 Dado las anteriores consideraciones, se plantea el siguiente diagrama de cajas:
 ![Imagen](https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Diagrama_cajas.PNG)
 
+El cual es muy similar al dado en el planteamiento del problema, pero con las siguientes modificaciones principales en el código:
+* Para hacer la ampliación de la pantalla por 8 veces la caja de Conv_addr se modifica de la siguiente manera:
+````
+reg [10:0] tempx;
+reg [10:0] tempy;
 
-
+always @ (VGA_posX, VGA_posY) begin
+		tempx = VGA_posX/8;
+		tempy = VGA_posY/8;	
+		DP_RAM_addr_out=tempx+tempy*CAM_SCREEN_X;	
+end
+````
+* Para poder recibir dos direcciones y datos distintos para escribir en la memoria, el buffer_ram_dp se modifica de la siguiente manera:
+````
+always @(posedge clk_w) begin 
+		 mux=~mux;
+		 if(mux)begin
+			if (regwrite == 1) begin
+             ram[addr_in] <= data_in;
+			end
+		 end else begin
+			if (regwrite2 == 1) begin
+				 ram[addr_in2] <=data_in2;
+			end
+		 end	 
+end
+````
+con lo cual, se va alternando la dirección y dato que escribe.
 
 ## Juego
- 
+Para hacer el desarrollo del juego, se van a plantear dos procesos diferentes, uno correspondiente al movimiento de la barra y otro al movimiento de la pelota, cada uno haciendo uso de un campo para escribir en la memoria. Así, se plantean las siguientes máquinas de estados
 
 ###### Máquinas de estados 
 
@@ -33,5 +59,5 @@ Dado las anteriores consideraciones, se plantea el siguiente diagrama de cajas:
 
 
 ## Resultados
- 
+
  
