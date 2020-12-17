@@ -374,16 +374,9 @@ endmodule
 * Mover la barra a izquierda y derecha con los pulsadores P90 y P91 respectivamente 
 * En caso de que pierda, puede oprimir el boton reset (P86) para que se vuelva a iniciar el juego
 
-
-<figure class="video_container">
-  <video controls="true" allowfullscreen="true" >
-    <source src="/wp01-vga-grupo04/Imagenes/Correr el juego.mp4" type="video/mp4">
-  </video>
-</figure>
-
-/wp01-vga-grupo04/Imagenes/Correr el juego.mp4
+https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Correr%20el%20juego.mp4 
 
 **Jugando**
 
-
+https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Jugando.mp4 
  
