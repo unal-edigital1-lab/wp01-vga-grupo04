@@ -186,15 +186,9 @@ reg [10:0] tempx;
 reg [10:0] tempy;
 
 always @ (VGA_posX, VGA_posY) begin
-//		if ((VGA_posX>CAM_SCREEN_X-1) || (VGA_posY>CAM_SCREEN_Y-1))
-//			DP_RAM_addr_out=20500; //19212 12300
-//		else
-//			DP_RAM_addr_out=VGA_posX+VGA_posY*CAM_SCREEN_X;
-
 		tempx = VGA_posX/8;
 		tempy = VGA_posY/8;	
-		DP_RAM_addr_out=tempx+tempy*CAM_SCREEN_X;
-		
+		DP_RAM_addr_out=tempx+tempy*CAM_SCREEN_X;	
 end
 
 
@@ -205,7 +199,7 @@ end
 este bloque debe crear un nuevo archivo 
 **************************************************************************** */
  FSM_game  juego(
-	 	.clk(clk2Hz),  //clk108M
+	 	.clk(clk2Hz), 
 		.rst(~rst),
 		.in1(~bntr),
 		.in2(~bntl),

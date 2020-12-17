@@ -55,17 +55,9 @@ always @(posedge clk_w) begin
 			if (regwrite2 == 1) begin
 				 ram[addr_in2] <=data_in2;
 			end
-		 end
-       
-		 
+		 end	 
 end
 
-//always @(posedge clk_w2) begin
-//		 if (regwrite2 == 1)
-//				ram[addr_in2] <= data_in2;
-//end
-
-//	 Lectura  de la memoria port 2 
 always @(posedge clk_r) begin 
 		data_out <= ram[addr_out]; 
 end
