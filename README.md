@@ -376,10 +376,9 @@ endmodule
 
 
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="path/to/poster_image.png">
-    <source src="Imagenes/Correr el juego.mp4" type="video/mp4">
-  </video>
+  <iframe src="https://github.com/unal-edigital1-lab/wp01-vga-grupo04/blob/main/Imagenes/Correr%20el%20juego.mp4" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+
 
 
 **Jugando**
