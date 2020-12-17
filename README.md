@@ -13,5 +13,6 @@ Nombres:
  pantalla de 160x128 usando un bit de cada color por pixel 
  Memoria total = (160x128x3)/1024= 60 kbits.
  **Descripción del código**
+ ![Imagen](https://github.com/unal-edigital1-lab/lab04-banco-registros-grupo04/blob/master/C4j4.png)
  
  
